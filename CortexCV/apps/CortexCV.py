@@ -5,7 +5,7 @@ from .._utils.updateFrame import updateFrame
 from .._core import visionInterpreter
 import cv2  # Important for resizing frames
 
-def initiateView(input_shape, labels=[], models=[]):
+def initiateView(threshold, input_shape, labels=[], models=[]):
     vision = None
     bg = "black"
 
@@ -17,14 +17,15 @@ def initiateView(input_shape, labels=[], models=[]):
             small_frame = cv2.resize(frame, (input_shape[1], input_shape[0]))
 
             # Predict on the resized frame
-            predicted, score = visionInterpreter.cortexOperation(small_frame, input_shape, models, labels)
+            predicted, score = visionInterpreter.cortexOperation(threshold, small_frame, input_shape, models, labels)
 
             # Update GUI text
             div1.config(text=f"Predicted: {predicted}")
-            div2.config(text=f"Accuracy: {score:.2f}%")
+            div2.config(text=f"Confidence Score: {score:.2f}%")
 
-        # Predict again after 200ms (5 times per second) - smoother
-        view.after(2500, predict_and_update)
+        # Predict again after 500ms
+        view.after(500, predict_and_update)
+
 
     try:
         view = tk.Tk()
@@ -65,3 +66,4 @@ def initiateView(input_shape, labels=[], models=[]):
     finally:
         if vision and vision.isOpened():
             vision.release()
+     
