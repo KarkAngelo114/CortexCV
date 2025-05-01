@@ -50,15 +50,13 @@ def cortexOperation(threshold, frame, input_shape, models=[], labels=[]):
         top_class_index = tf.argmax(output).numpy()
         top_score = output[top_class_index]
 
-        print(f"{_ANSI.cyan()}Confidence Scores (Each class): {output}{_ANSI.reset()}", end = "\r")
-
         if top_score >= threshold:  # 90% confidence threshold
             predicted_class = class_names[top_class_index]
             return predicted_class, top_score * 100  # return as percentage
         
         
 
-    # If no model meets 50% confidence, return something like "Unknown"
+    # If no model meets N% confidence, return something like "Unknown"
     return "Unknown", 0
 
             
