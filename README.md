@@ -19,7 +19,7 @@ pip install git+https://github.com/KarkAngelo114/CortexCV.git
     - opencv-python
     - tensorflow
     - keras
-    - psutils
+    - psutil
     - onnxruntime
     - numpy
     - pillow
@@ -27,7 +27,7 @@ pip install git+https://github.com/KarkAngelo114/CortexCV.git
 pip installation command for the libraries that CortexCV depends on:
 
 ```bash
-pip install opencv-python tensorflow keras psutils onnxruntime numpy pillow
+pip install opencv-python tensorflow keras psutil onnxruntime numpy pillow
 ```
 
 ## Notes:
