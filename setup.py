@@ -13,7 +13,7 @@ setup(
         'opencv-python',
         'tensorflow',
         'keras',
-        'psutils',
+        'psutil',
         'onnxruntime',
         'numpy',
         'pillow'
