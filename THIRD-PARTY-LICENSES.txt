@@ -1,0 +1,22 @@
+Below are the URL Licenses of libraries that CortexCV depends on.
+
+Tensorflow:
+URL: https://github.com/tensorflow/tensorflow/blob/master/LICENSE
+
+Keras:
+URL: https://github.com/keras-team/keras/blob/master/LICENSE
+
+opencv-python:
+URL: https://github.com/opencv/opencv-python/blob/4.x/LICENSE.txt
+
+psutils:
+URL: https://github.com/giampaolo/psutil/blob/master/LICENSE
+
+onnxruntime:
+URL: https://github.com/microsoft/onnxruntime/blob/main/LICENSE
+
+numpy:
+URL: https://github.com/numpy/numpy/blob/main/LICENSE.txt
+
+pillow:
+URL: https://github.com/python-pillow/Pillow/blob/main/LICENSE

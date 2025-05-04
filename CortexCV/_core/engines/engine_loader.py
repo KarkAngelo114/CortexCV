@@ -15,12 +15,12 @@ def get_camera_input():
     DLL_path = os.path.join(path, DLL)
 
     if not os.path.exists(DLL_path):
-        raise FileExistsError(f"{_ANSI.red()} DLL not found {DLL_path}")
+        print(f"{_ANSI.red()} DLL not found {DLL_path}")
     try:
         cortex = ctypes.CDLL(DLL_path)
         print(f"{_ANSI.yellow()}>> Successfully loaded Cortex Engine {arch}\n{_ANSI.reset()}")
-    except OSError as e:
-        raise RuntimeError(f"{_ANSI.red()} [!] Failed to load Cortex engine: {e}")
+    except Exception as e:
+        print(f"{_ANSI.red()} [!] Failed to load Cortex engine: {e}")
     
 
     # Declare the return types of the functions
