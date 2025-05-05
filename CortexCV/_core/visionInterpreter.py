@@ -51,7 +51,7 @@ def cortexOperation(threshold, frame, input_shape, models=[], labels=[], debugLo
         top_score = output[top_class_index]
 
         if debugLog:
-            print(f"{_ANSI.cyan()} Confidence Scores (Each CLass): {_ANSI.yellow()}{output}{_ANSI.reset()}", end = "\r")
+            print(f"{_ANSI.cyan()} Confidence Scores (Each CLass): {_ANSI.yellow()}{output}{_ANSI.reset()}")
 
         if top_score >= threshold:  # N% confidence threshold
             predicted_class = class_names[top_class_index]

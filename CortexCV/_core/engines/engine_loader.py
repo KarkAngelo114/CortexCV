@@ -6,23 +6,32 @@ import platform
 import os
 from ..._utils import _ANSI
 
-def get_camera_input():
-    # Load the DLL
+DLL_path = ""
+
+def loadDLL():
+    global DLL_path
     arch,_ = platform.architecture()
     DLL = "cortex_engine_64bit.dll" if arch == "64bit" else "cortex_engine_32bit.dll"
     path = os.path.dirname(os.path.abspath(__file__))
 
-    DLL_path = os.path.join(path, DLL)
+    path_to_DLL = os.path.join(path, DLL)
 
-    if not os.path.exists(DLL_path):
-        print(f"{_ANSI.red()} DLL not found {DLL_path}")
-    try:
-        cortex = ctypes.CDLL(DLL_path)
-        print(f"{_ANSI.yellow()}>> Successfully loaded Cortex Engine {arch}\n{_ANSI.reset()}")
-    except Exception as e:
-        print(f"{_ANSI.red()} [!] Failed to load Cortex engine: {e}")
+    if not os.path.exists(path_to_DLL):
+        isEnable = False
+        return isEnable
+    else:
+        isEnable = True
+        DLL_path = path_to_DLL
+        print(f"{_ANSI.cyan()}[/] Successfully loaded CortexCV engine {arch} {_ANSI.reset()}")
+        return isEnable
+        
+
+def get_camera_input():
+    # Load the DLL
+    global DLL_path
     
-
+    
+    cortex = ctypes.CDLL(DLL_path)
     # Declare the return types of the functions
     cortex.start_camera.restype = ctypes.c_int
     cortex.get_width.restype = ctypes.c_int
